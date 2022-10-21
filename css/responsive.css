@@ -1,0 +1,17 @@
+@media all and (max-width: 1000px) {
+
+  .pokemon {
+    width: 40%;
+    margin: calc(20%/4);
+  }
+
+}
+
+@media all and (max-width: 670px) {
+  
+  .pokemon {
+    width: 80%;
+    margin: calc(20%/2);
+  }
+
+}

@@ -1,0 +1,60 @@
+body {
+  text-align: center;
+  max-width: 1170px;
+  margin-left: auto;
+  margin-right: auto; 
+}
+
+.pokemons {
+  width: 100%;
+  float: left;
+  text-align: center;
+  background-color: burlywood;
+}
+
+.pokemon {  
+  width: 20%;
+  margin: calc(20%/8);
+  float: left;
+  text-align: center;
+}
+
+.grass {
+  background-color: lightgreen;
+}
+
+.fire {
+  background-color: rgb(226, 136, 103);
+}
+
+.water {
+  background-color: lightblue;
+}
+
+.bug {
+  background-color: lightslategray;
+}
+
+.normal {
+  background-color: aliceblue;
+}
+
+.poison {
+  background-color: rgb(173, 114, 228);
+}
+
+.electric {
+  background-color: #ecec55;
+}
+
+.ground {
+  background-color: rgb(165, 91, 91);
+}
+
+.first_line {
+  padding-top: 20px;
+}
+
+.last_line {
+  padding-bottom: 20px;
+}

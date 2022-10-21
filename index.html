@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Ninja Ken</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Belajar menggunakan AJAX">
+    <meta name="keywords" content="Frontend, HTML, CSS, JavaScript, AJAX, React, Git">
+    <meta name="author" content="Hilman Rizky Yudhaperwira">
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="#" />
+    <meta property="og:url" content="#" />
+    <meta property="og:title" content="Get Pokemon | Learn AJAX" />
+    <meta property="og:description" content="Belajar Membuat wesite dengan menggunakan AJAX" />
+    <meta charset="utf-8">
+    <link rel="icon" href="images/favicon.ico" type="#">
+    <link rel="stylesheet" href="./css/stylesheet.css">
+    <link rel="stylesheet" href="./css/responsive.css"> 
+  </head>
+
+  <body>
+    <h1>Pokemon List</h1><br>
+
+    <button type="button" id="button" onclick="fetchData()">Show 30 Pokemons</button><br><br>
+
+    <div id="pokemon-list" class="pokemons">
+
+    </div>
+
+    <script>
+      function fetchData() {
+        const xhttp = new XMLHttpRequest();
+        const url = "https://pokeapi.co/api/v2/pokemon/pikachu";
+        const httpMethod = "GET";
+        xhttp.onload = function() {
+          const response = JSON.parse(this.responseText);
+          const id = response.id;
+          const name = response.name;
+          const image_url = response.sprites.front_default;
+          const type = response.types[0].type.name;
+
+          let data = '';
+          /*
+          data = data + `
+          <div class="pokemon">
+          <p>${id}</p>
+          <p>${name}</p>
+          <img src=${image_url}>
+          <p>${type}</p>
+          </div>
+          `; 
+          */
+
+          for (let i = 0; i < 30; i++) {
+            //...
+            const xhttp2 = new XMLHttpRequest();
+            const url2 = "https://pokeapi.co/api/v2/pokemon?limit=30";
+            const httpMethod2 = "GET";
+            xhttp2.onload = function() {
+              const response2 = JSON.parse(this.responseText);
+              const xhttp3 = new XMLHttpRequest();
+              const url3 = response2.results[i].url;
+              const httpMethod3 = "GET";
+              xhttp3.onload = function() {
+                const response3 = JSON.parse(this.responseText);
+                const id = response3.id;
+                const name = response3.name;
+                const image_url = response3.sprites.front_default;
+                const type = response3.types[0].type.name;
+
+                data = data + `
+                <div class="pokemon">
+                <div class=${type}>
+                <p class="first_line">${id}</p>
+                <p>${name}</p>
+                <img src=${image_url}>
+                <p class="last_line">type: ${type}</p>
+                </div>
+                </div>
+                `;
+
+                document.getElementById("pokemon-list").innerHTML = data;
+
+              }
+              xhttp3.open(httpMethod3, url3);
+              xhttp3.send();
+              
+
+            }
+            xhttp2.open(httpMethod2, url2);
+            xhttp2.send();
+            //...
+          }
+        }
+        xhttp.open(httpMethod, url);
+        xhttp.send();
+      }
+    </script>
+  </body>
+
+</html>
